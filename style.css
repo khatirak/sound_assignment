@@ -1,0 +1,394 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #2a2a2a;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+/* Navigation Bar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #1a1a1a;
+    padding: 15px 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 0 20px;
+}
+
+.nav-item {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 10px 24px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.nav-item:hover {
+    background: #3a3a3a;
+    color: #ff8c42;
+}
+
+.nav-item.active {
+    color: #ff8c42;
+    background: #2a2a2a;
+}
+
+.arena-container {
+    width: 90vw;
+    max-width: 1200px;
+    height: 80vh;
+    position: relative;
+    background: #1a1a1a;
+    margin-top: 80px;
+}
+
+/* Crowd area - curved section arcing downwards */
+.crowd-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 65%;
+    background: #3a3a3a;
+    border-radius: 50% 50% 0 0 / 30% 30% 0 0;
+    overflow: hidden;
+}
+
+/* Individual crowd member circles */
+.crowd-circle {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: rgb(255, 255, 255);
+    border-radius: 50%;
+    border: 2px solid #999;
+}
+
+/* Basketball court - trapezoid shape for perspective */
+.court {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 45%;
+    background: #c4955f;
+    clip-path: polygon(15% 0%, 85% 0%, 100% 100%, 0% 100%);
+    perspective: 800px;
+}
+
+/* Court markings - Near side (bottom) */
+.lane-left, .lane-right {
+    position: absolute;
+    bottom: 0;
+    width: 3px;
+    height: 50%;
+    background: white;
+}
+
+.lane-left {
+    left: 35%;
+}
+
+.lane-right {
+    right: 35%;
+}
+
+.free-throw-line {
+    position: absolute;
+    bottom: 50%;
+    left: 35%;
+    right: 35%;
+    height: 3px;
+    background: white;
+}
+
+.free-throw-circle {
+    position: absolute;
+    bottom: 45%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 40px;
+    border: 3px solid white;
+    border-bottom: none;
+    border-radius: 50% 50% 0 0;
+}
+
+.three-point-line {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 70%;
+    border: 3px solid white;
+    border-bottom: none;
+    border-radius: 50% 50% 0 0 / 40% 40% 0 0;
+}
+
+/* Court markings - Far side (top/back) */
+.lane-left-far, .lane-right-far {
+    position: absolute;
+    top: 0;
+    width: 2px;
+    height: 35%;
+    background: white;
+}
+
+.lane-left-far {
+    left: 44%;
+}
+
+.lane-right-far {
+    right: 44%;
+}
+
+.free-throw-line-far {
+    position: absolute;
+    top: 35%;
+    left: 44%;
+    right: 44%;
+    height: 2px;
+    background: white;
+}
+
+.free-throw-circle-far {
+    position: absolute;
+    top: 32%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 45px;
+    height: 22px;
+    border: 2px solid white;
+    border-top: none;
+    border-radius: 0 0 50% 50%;
+}
+
+.three-point-line-far {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 110px;
+    height: 55%;
+    border: 2px solid white;
+    border-top: none;
+    border-radius: 0 0 50% 50% / 0 0 40% 40%;
+}
+
+/* Sidelines extending full court - angled to match court perspective */
+.sideline-left, .sideline-right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: white;
+}
+
+.sideline-left {
+    left: 25%;
+    transform: skewX(-20deg);
+}
+
+.sideline-right {
+    right: 25%;
+    transform: skewX(20deg);
+}
+
+/* Baseline at the far end */
+.baseline-far {
+    position: absolute;
+    top: 0;
+    left: 20%;
+    right: 20%;
+    height: 2px;
+    background: white;
+}
+
+/* Center circle */
+.center-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 50px;
+    border: 3px solid white;
+    border-radius: 50%;
+}
+
+.center-line {
+    position: absolute;
+    top: 50%;
+    left: 15%;
+    right: 15%;
+    height: 3px;
+    background: white;
+}
+
+/* Basketball */
+.basketball {
+    position: absolute;
+    bottom: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 80px;
+    background: #ff8c42;
+    border-radius: 50%;
+    z-index: 10;
+}
+
+/* Basketball hoop and backboard */
+.hoop-pole {
+    position: absolute;
+    bottom: 35%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 150px;
+    background: #555;
+    z-index: 3;
+}
+
+.backboard {
+    position: absolute;
+    bottom: 45%;
+    margin-bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 90px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 4px solid #444;
+    z-index: 5;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.hoop {
+    position: absolute;
+    bottom: 45%;
+    margin-bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 30px;
+    border: 3px solid #d35400;
+    border-top: none;
+    border-radius: 0 0 50% 50%;
+    z-index: 6;
+}
+
+/* About Page Styles */
+.about-container {
+    max-width: 1200px;
+    width: 90vw;
+    margin: 100px auto 50px;
+    padding: 40px 20px;
+}
+
+.about-title {
+    color: #ffffff;
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 60px;
+    font-weight: 600;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    justify-items: center;
+}
+
+.team-member {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 300px;
+}
+
+.member-image-placeholder {
+    width: 100%;
+    aspect-ratio: 1;
+    background: #3a3a3a;
+    border: 3px solid #555;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.member-image-placeholder:hover {
+    border-color: #ff8c42;
+    background: #4a4a4a;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(255, 140, 66, 0.3);
+}
+
+.placeholder-text {
+    color: #888;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.member-name {
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.member-description {
+    color: #cccccc;
+    font-size: 14px;
+    line-height: 1.6;
+    text-align: center;
+    margin: 0;
+    padding: 0 10px;
+}
+
+@media (max-width: 768px) {
+    .team-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .team-member {
+        max-width: 100%;
+    }
+    
+    .about-title {
+        font-size: 28px;
+        margin-bottom: 40px;
+    }
+}
+
