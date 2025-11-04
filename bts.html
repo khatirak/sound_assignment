@@ -20,8 +20,71 @@
     <!-- BTS Content Section -->
     <div class="bts-container">
         <h1 class="bts-title">Behind the Scenes</h1>
-        <!-- BTS content will go here -->
+        
+        <!-- Carousel Container -->
+        <div class="carousel-wrapper">
+            <div class="carousel-container">
+                <!-- Previous Button -->
+                <button class="carousel-btn carousel-btn-prev" onclick="changeSlide(-1)" aria-label="Previous slide">
+                    &#8249;
+                </button>
+                
+                <!-- Slides Container -->
+                <div class="carousel-slides">
+                    <!-- Slide 1: Image -->
+                    <div class="carousel-slide active">
+                        <img src="img/bts1.jpg" alt="Behind the Scenes 1" class="carousel-image">
+                        <div class="carousel-caption">
+                            <p>Behind the Scenes Photo 1</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 2: Image -->
+                    <div class="carousel-slide">
+                        <img src="img/bts2.jpg" alt="Behind the Scenes 2" class="carousel-image">
+                        <div class="carousel-caption">
+                            <p>Behind the Scenes Photo 2</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 3: Image -->
+                    <div class="carousel-slide">
+                        <img src="img/bts3.jpg" alt="Behind the Scenes 3" class="carousel-image">
+                        <div class="carousel-caption">
+                            <p>Behind the Scenes Photo 3</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 4: Video -->
+                    <div class="carousel-slide">
+                        <video class="carousel-video" controls>
+                            <source src="video/bts-video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="carousel-caption">
+                            <p>Behind the Scenes Video</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Next Button -->
+                <button class="carousel-btn carousel-btn-next" onclick="changeSlide(1)" aria-label="Next slide">
+                    &#8250;
+                </button>
+            </div>
+            
+            <!-- Carousel Indicators (Dots) -->
+            <div class="carousel-indicators">
+                <span class="carousel-indicator active" onclick="goToSlide(0)"></span>
+                <span class="carousel-indicator" onclick="goToSlide(1)"></span>
+                <span class="carousel-indicator" onclick="goToSlide(2)"></span>
+                <span class="carousel-indicator" onclick="goToSlide(3)"></span>
+            </div>
+        </div>
     </div>
+    
+    <script src="script.js"></script>
+    <script src="bts-carousel.js"></script>
 </body>
 </html>
 
