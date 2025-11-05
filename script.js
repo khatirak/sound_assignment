@@ -10,8 +10,6 @@ const colorStates = {
     intro: '#ffaa66',       // Warm orange
     firstMake: '#4caf50',   // Green (success)
     firstMiss: '#f44336',   // Red (miss)
-    secondMake: '#66bb6a',  // Bright green (win)
-    secondMiss: '#d32f2f',  // Dark red (loss)
     win: '#81c784',         // Bright green (victory)
     overtime: '#ffc107',    // Yellow (overtime)
     loss: '#c62828'         // Dark red (loss)
@@ -55,10 +53,6 @@ function playAudio(fileName, callback) {
     // Update color state based on audio file (only if not already set by choice handlers)
     if (fileName === 'first_part.wav') {
         updateCrowdColors('intro');
-    } else if (fileName === 'a1.wav' || fileName === 'a2.wav') {
-        // Colors already updated in handleFirstChoice, so skip here
-    } else {
-        // Colors will be updated in handleSecondChoice
     }
     
     // Play audio
@@ -155,7 +149,4 @@ function startAudio() {
 document.addEventListener('DOMContentLoaded', function() {
     // Hide all buttons initially
     hideAllButtons();
-
-
 });
-

@@ -174,56 +174,6 @@ body {
     perspective: 800px;
 }
 
-/* Court markings - Near side (bottom) */
-.lane-left, .lane-right {
-    position: absolute;
-    bottom: 0;
-    width: 3px;
-    height: 50%;
-    background: white;
-}
-
-.lane-left {
-    left: 35%;
-}
-
-.lane-right {
-    right: 35%;
-}
-
-.free-throw-line {
-    position: absolute;
-    bottom: 50%;
-    left: 35%;
-    right: 35%;
-    height: 3px;
-    background: white;
-}
-
-.free-throw-circle {
-    position: absolute;
-    bottom: 45%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 40px;
-    border: 3px solid white;
-    border-bottom: none;
-    border-radius: 50% 50% 0 0;
-}
-
-.three-point-line {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 200px;
-    height: 70%;
-    border: 3px solid white;
-    border-bottom: none;
-    border-radius: 50% 50% 0 0 / 40% 40% 0 0;
-}
-
 /* Court markings - Far side (top/back) */
 .lane-left-far, .lane-right-far {
     position: absolute;
@@ -291,37 +241,6 @@ body {
 .sideline-right {
     right: 25%;
     transform: skewX(20deg);
-}
-
-/* Baseline at the far end */
-.baseline-far {
-    position: absolute;
-    top: 0;
-    left: 20%;
-    right: 20%;
-    height: 2px;
-    background: white;
-}
-
-/* Center circle */
-.center-circle {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100px;
-    height: 50px;
-    border: 3px solid white;
-    border-radius: 50%;
-}
-
-.center-line {
-    position: absolute;
-    top: 50%;
-    left: 15%;
-    right: 15%;
-    height: 3px;
-    background: white;
 }
 
 /* Basketball */
