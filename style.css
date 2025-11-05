@@ -56,6 +56,8 @@ body {
     background: #2a2a2a;
 }
 
+
+
 .arena-container {
     width: 90vw;
     max-width: 1200px;
@@ -826,6 +828,15 @@ body {
     overflow: hidden;        
   }
 
+  .nav-container {
+    gap: 10px;
+    padding: 8px;
+  }
+  .nav-item {
+    font-size: 19px;
+    padding: 6px 10px;
+  }
+
   .hero-banner {
     margin-top: 50px;
     height: 100vh;       
@@ -866,4 +877,3 @@ body {
     margin-bottom: 25px;
   }
 }
-

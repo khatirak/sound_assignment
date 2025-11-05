@@ -155,5 +155,7 @@ function startAudio() {
 document.addEventListener('DOMContentLoaded', function() {
     // Hide all buttons initially
     hideAllButtons();
+
+
 });
 
