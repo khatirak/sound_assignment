@@ -4,9 +4,6 @@ let firstChoice = null;
 // Audio element
 let currentAudio = null;
 
-// Track current audio state
-let currentAudioState = 'idle'; // 'idle', 'intro', 'first-choice', 'second-choice', 'ending'
-
 // Color states for different audio stages - using direct colors for SVG
 const colorStates = {
     idle: '#888888',        // Neutral gray
@@ -57,13 +54,10 @@ function playAudio(fileName, callback) {
     
     // Update color state based on audio file (only if not already set by choice handlers)
     if (fileName === 'first_part.wav') {
-        currentAudioState = 'intro';
         updateCrowdColors('intro');
     } else if (fileName === 'a1.wav' || fileName === 'a2.wav') {
-        currentAudioState = 'first-choice';
         // Colors already updated in handleFirstChoice, so skip here
     } else {
-        currentAudioState = 'ending';
         // Colors will be updated in handleSecondChoice
     }
     
@@ -144,9 +138,8 @@ function startAudio() {
     // Hide all choice buttons initially
     hideAllButtons();
     
-    // Reset first choice and state
+    // Reset first choice
     firstChoice = null;
-    currentAudioState = 'idle';
     
     // Reset colors to neutral
     updateCrowdColors('idle');

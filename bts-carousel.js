@@ -3,7 +3,6 @@
 let currentSlide = 0;
 let slides = [];
 let indicators = [];
-let autoPlayInterval = null;
 
 // Initialize carousel when page loads
 document.addEventListener('DOMContentLoaded', function() {
@@ -12,9 +11,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Set initial active slide
     updateCarousel();
-    
-    // Optional: Auto-play functionality (uncomment if desired)
-    // startAutoPlay();
     
     // Pause video when switching slides
     setupVideoHandling();
@@ -25,7 +21,6 @@ function changeSlide(direction) {
     const totalSlides = slides.length;
     currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
     updateCarousel();
-    resetAutoPlay();
 }
 
 // Go to specific slide
@@ -33,7 +28,6 @@ function goToSlide(index) {
     if (index >= 0 && index < slides.length) {
         currentSlide = index;
         updateCarousel();
-        resetAutoPlay();
     }
 }
 
@@ -98,26 +92,6 @@ function setupVideoHandling() {
             });
         }
     });
-}
-
-// Optional: Auto-play functionality
-function startAutoPlay() {
-    autoPlayInterval = setInterval(function() {
-        changeSlide(1);
-    }, 5000); // Change slide every 5 seconds
-}
-
-function stopAutoPlay() {
-    if (autoPlayInterval) {
-        clearInterval(autoPlayInterval);
-        autoPlayInterval = null;
-    }
-}
-
-function resetAutoPlay() {
-    stopAutoPlay();
-    // Uncomment if you want auto-play
-    // startAutoPlay();
 }
 
 // Keyboard navigation
